@@ -132,6 +132,7 @@ df = pandas.read_csv()
 
 Quel est le type de l'objet `df`?
 ```
+pandas.DataFrame
 
 ```
 
@@ -139,27 +140,35 @@ Quel est le type de l'objet `df`?
 Que permettent les méthodes suivantes?
 ###### df.shape
 ```
+donne les dimensions du DataFrame
 ```
 ###### df.head()
 ```
+affiche les premières lignes du DataFrame
 ```
 ###### df.tail()
 ```
+affiche les dernières lignes du DataFrame
 ```
 ###### df.columns
 ```
+Donne le nom de toute les colonnes
 ```
 ###### df.dtypes
 ```
+donne le type que contient chaque colonne 
 ```
-###### df.info
+###### df.info()
 ```
+donne le nombre d'entrée, le nombre de colonne, le type de chaque colonne et le nombre de valeur nul et non nul
 ```
 ###### df.describe()
 ```
+donne les statistiques de la colonne float (moyenne, variance, quartile etc)
 ```
 ###### df.dropna()
 ```
+supprime les lignes contenants des NA
 ```
 
 ##### Accès aux éléments d'une table de données
@@ -179,16 +188,17 @@ On peut accéder aux valeurs du DataFrame via des indices ou plages d'indice. La
 Il y a différentes manières de le faire, l'utilisation de `.iloc[slice_ligne,slice_colonne]` constitue une des solutions les plus simples. N'oublions pas que shape permet d'obtenir les dimensions (lignes et colonnes) du DataFrame.
 ###### Acceder aux cinq premières lignes de toutes les colonnes
 ```python
-
+values.iloc[:5,:]
 ```
 
 ###### Acceder à toutes les lignes de la dernière colonne
 ```python
-
+values.iloc[:,-1]
 ```
 
 ###### Acceder aux cinq premières lignes des colonnes 0, 2 et 3
 ```python
+values.iloc[:5, [0, 2, 3]]
 
 ```
 
@@ -241,7 +251,11 @@ df.loc[ df['Gene Symbol'].isin(['fadR', 'arcA'] ) ]
 
 ##### 3. A partir de cette échantillon de ratio d'abondance,  estimez la moyenne $\mu$ et l'ecart-type $\sigma$ d'une loi normale.
 ```
+mu = df.iloc[:,4].mean() 
+-0.6467130248461945
 
+sigma = df.iloc[:,4].std()
+0.46723442417098815
 
 ```
 
@@ -259,11 +273,11 @@ ax.plot(x, norm.pdf(x, mu, sigma)*scale) # compute theoritical PDF and draw it
 ```
 
 ![Histogramme à inserez ici](histogram_log2FC.png "Title")
-
+![alt text](image-1.png)
 ##### 5. Quelles remarques peut-on faire à l'observation de l'histogramme et de la loi théorique?
 
 ```
-
+On voit que la distribution ne suit pas une loi normale. 
 
 ```
 
@@ -278,6 +292,7 @@ Sont condidérées comme surabondantes les proteines remplissant ces deux critè
 * $\text{p-value}<0.001$
 
 ![Volcano plot + quadrant à inserez ici](histogram_log2FC.png "Title")
+![alt text](image-3.png)
 
 ### Analyse Fonctionelle de pathway
 
@@ -357,10 +372,10 @@ Completer le tableau ci-dessous avec les quantités vous semblant adéquates pou
 
 | Symboles | Paramètres | Quantités Biologiques |
 | --- | --- | --- |
-| k | nombre de succès observés| |
-| K | nombre de succès possibles| |
-| n | nombre d'observations| |
-| N | nombre d'elements observables| |
+| k | nombre de succès observés|nombre de protéines surabondantes qui possèdent ce term GO |
+| K | nombre de succès possibles| nombre de protéines de notre jeu de données qui possèdent le go term |
+| n | nombre d'observations| 23, c'est le nbr de protéines surabondantes qu'on a  |
+| N | nombre d'elements observables| nombre total de protéine dans le jeu de données |
 
 #### 4. Calcul de l'enrichissement en fonctions biologiques
 
