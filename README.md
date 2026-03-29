@@ -179,6 +179,10 @@ values = df[['Description', 'Gene Symbol']]
 
 Quel est le type de `values` ?
 
+```
+pandas.Dataframe
+```
+
 Verifiez si certaines méthodes de `DataFrame` lui sont applicables.
 Ce type supporte l'accès par indice et les slice `[a:b]`
 
@@ -277,7 +281,8 @@ ax.plot(x, norm.pdf(x, mu, sigma)*scale) # compute theoritical PDF and draw it
 ##### 5. Quelles remarques peut-on faire à l'observation de l'histogramme et de la loi théorique?
 
 ```
-On voit que la distribution ne suit pas une loi normale. 
+On voit que la distribution ne suit pas une loi normale. On observe une asymétrie, avec un décalage vers la gauche, ce qui indique qu'en présence de tétracycline, globalement, les protéines sont plutôt sous-exprimées. 
+
 
 ```
 
@@ -302,9 +307,7 @@ Nous allons implementer une approche ORA (Over Representation Analysis) naive.
 
 Quelles sont leurs identifiants UNIPROT ?
 ``` 
-
-
-
+P23721  P77804  P0A6K6  P0A799  P0A7G6  P0A6F3  P25745  P0A6M8  P0A6L0  P0A8V6  P0A9Q1  P02358  P0ACF8  P62399  P0A905  P76506  P13036  P10384  P06971  P0A910  P06996  P76344  P02931
 ```
 
 #### 2. Listez les termes GO portés par ces protéines surabondates
@@ -385,22 +388,22 @@ de chaque terme GO portés par les protéines surabondantes. Vous reporterez ces
 | identifiant GO | définition | occurence | pvalue|
 |---|---|---|---|
 |   |   |   |   |
-GO:0009279 C:cell outer membrane 114 5.4658329494706094e-05
-GO:0009264 P:deoxyribonucleotide catabolic process 2 0.00016531895777178792
-GO:0034220 P:ion transmembrane transport 12 0.0004043291020097005
-GO:0046930 C:pore complex 19 0.0016767282053976949
-GO:0015288 F:porin activity 20 0.0019557209822207763
-GO:0038023 F:signaling receptor activity 6 0.0024013577238342367
-GO:0015344 F:siderophore uptake transmembrane transporter activity 8 0.004411207669366385
-GO:0055072 P:iron ion homeostasis 13 0.011806350295422872
-GO:0004648 F:O-phospho-L-serine:2-oxoglutarate aminotransferase activity 1 0.013142857142857142
-GO:0006563 P:L-serine metabolic process 1 0.013142857142857142
+GO:0009279 | C:cell outer membrane | 114 |5.4658329494706094e-05
+GO:0009264 | P:deoxyribonucleotide catabolic process |2 | 0.00016531895777178792
+GO:0034220 | P:ion transmembrane transport | 12 | 0.0004043291020097005
+GO:0046930 | C:pore complex | 19 | 0.0016767282053976949
+GO:0015288 | F:porin activity | 20 | 0.0019557209822207763
+GO:0038023 | F:signaling receptor activity | 6 | 0.0024013577238342367
+GO:0015344 | F:siderophore uptake transmembrane transporter activity | 8 | 0.004411207669366385
+GO:0055072 | P:iron ion homeostasis | 13|  0.011806350295422872
+GO:0004648 |  F:O-phospho-L-serine:2-oxoglutarate aminotransferase activity | 1 | 0.013142857142857142
+GO:0006563 | P:L-serine metabolic process | 1 | 0.013142857142857142
 
 
 Quelle interpretation biologique faites-vous de cet enrichissement en termes GO ?
 
 ```
-les protéines surexprimées sont impliquées dans l'expulsion. Donc la bactérie essaie d'expulser l'antibiotique
+Les termes GO enrichis sont principalement liés à la membrane (membrane externe, porines, complexes de pores) et au transport transmembranaire. Cet enrichissement indique que les protéines surabondantes participent majoritairement à des mécanismes de transport et d’échanges à travers la membrane bactérienne. Cela suggère une adaptation de la bactérie via la surexpression des protéines permettant l'expulsion de l'antibiotique.
 ```
 
 ### Analyse des interactions répertoriées dans STRING
