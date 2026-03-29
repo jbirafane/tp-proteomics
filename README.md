@@ -372,8 +372,8 @@ Completer le tableau ci-dessous avec les quantités vous semblant adéquates pou
 
 | Symboles | Paramètres | Quantités Biologiques |
 | --- | --- | --- |
-| k | nombre de succès observés|nombre de protéines surabondantes qui possèdent ce term GO |
-| K | nombre de succès possibles| nombre de protéines de notre jeu de données qui possèdent le go term |
+| k | nombre de succès observés| nombre de protéines surabondantes qui possèdent ce term GO |
+| K | nombre de succès possibles| nombre de protéines dans tout notre jeu de données qui possèdent le go term |
 | n | nombre d'observations| 23, c'est le nbr de protéines surabondantes qu'on a  |
 | N | nombre d'elements observables| nombre total de protéine dans le jeu de données |
 
@@ -385,9 +385,23 @@ de chaque terme GO portés par les protéines surabondantes. Vous reporterez ces
 | identifiant GO | définition | occurence | pvalue|
 |---|---|---|---|
 |   |   |   |   |
+GO:0009279 C:cell outer membrane 114 5.4658329494706094e-05
+GO:0009264 P:deoxyribonucleotide catabolic process 2 0.00016531895777178792
+GO:0034220 P:ion transmembrane transport 12 0.0004043291020097005
+GO:0046930 C:pore complex 19 0.0016767282053976949
+GO:0015288 F:porin activity 20 0.0019557209822207763
+GO:0038023 F:signaling receptor activity 6 0.0024013577238342367
+GO:0015344 F:siderophore uptake transmembrane transporter activity 8 0.004411207669366385
+GO:0055072 P:iron ion homeostasis 13 0.011806350295422872
+GO:0004648 F:O-phospho-L-serine:2-oxoglutarate aminotransferase activity 1 0.013142857142857142
+GO:0006563 P:L-serine metabolic process 1 0.013142857142857142
+
 
 Quelle interpretation biologique faites-vous de cet enrichissement en termes GO ?
 
+```
+les protéines surexprimées sont impliquées dans l'expulsion. Donc la bactérie essaie d'expulser l'antibiotique
+```
 
 ### Analyse des interactions répertoriées dans STRING
 
